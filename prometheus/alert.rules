@@ -1,0 +1,11 @@
+groups:
+- name: containers
+  rules:
+  - alert: container_memory_too_high
+    expr: container_memory_usage_bytes > 50000000
+    for: 15s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Memory usage is too high"
+      description: "The container {{ $labels.name }}is using more than 50MB of memory"
